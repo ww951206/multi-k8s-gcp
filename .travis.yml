@@ -1,0 +1,17 @@
+sudo: required
+services:
+    - dcoker
+before_install:
+     # Install the GCP and do source configuration
+    - curl https://sdk.cloud.google.com | bash > /dev/null;
+    - source $HOME/google-cloud-sdk/path.bash.inc
+     # install kubectl
+    - gcloud components updata kubectl
+     # Authorization
+    - gcloud auth acitivate-service-account --key-file service-account.json
+     # Set project, computezone, cluster
+    - gcloud config set project gcp-k8s-290220
+    - gcloud config set compute/zone us-east1-b	
+    - gcloud container clusters get-credentials multi-cluster
+
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
