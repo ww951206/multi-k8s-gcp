@@ -1,17 +1,32 @@
 sudo: required
 services:
     - dcoker
+env:
+    global:
+        - SHA=$(git rev-parse HEAD)
+        - CLOUDSKD_CORE_DISABLE_PROMPTS=1
 before_install:
      # Install the GCP and do source configuration
     - curl https://sdk.cloud.google.com | bash > /dev/null;
     - source $HOME/google-cloud-sdk/path.bash.inc
      # install kubectl
-    - gcloud components updata kubectl
+    - gcloud components update kubectl
      # Authorization
     - gcloud auth acitivate-service-account --key-file service-account.json
      # Set project, computezone, cluster
     - gcloud config set project gcp-k8s-290220
     - gcloud config set compute/zone us-east1-b	
     - gcloud container clusters get-credentials multi-cluster
-
+     # Login docker
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+     # build test image from client folder
+    - docker build -t ww951206/react-test -f ./client/Dockerfile.dev
+
+script: 
+    - docker run -e CI=true ww951206/react-test npm test     
+
+deploy:
+    provider: script
+    script: bash ./deploy.sh
+    on:
+        branch: master
