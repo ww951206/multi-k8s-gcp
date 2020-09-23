@@ -1,4 +1,5 @@
-docker build -t ww951206/multi-client:latest -t ww951206/multi-client:$SHA  -f ./client/Dockerfile ./client
+docker build -t ww951206/multi-client:latest -f ./client/Dockerfile ./client
+docker build -t ww951206/multi-client:$SHA -f ./client/Dockerfile ./client
 docker build -t ww951206/multi-server:latest -f ./server/Dockerfile ./server
 docker build -t ww951206/multi-server:$SHA -f ./server/Dockerfile ./server
 docker build -t ww951206/multi-worker:latest -f ./worker/Dockerfile ./worker
