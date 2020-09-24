@@ -11,8 +11,8 @@ before_install:
      # Install the GCP and do source configuration
     - curl https://sdk.cloud.google.com | bash > /dev/null;
     - source $HOME/google-cloud-sdk/path.bash.inc
-     # install kubectl
-    # - gcloud components update kubectl
+     # install kubectl IN TRAVIS CI ENVIRONMENT
+    - gcloud components update kubectl
      # Authorization
     - gcloud auth activate-service-account --key-file service-account.json
      # Set project, compute/zone, cluster
