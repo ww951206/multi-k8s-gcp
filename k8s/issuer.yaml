@@ -1,0 +1,11 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: CluterIssuer
+metadata:
+    name: letscencrypt-prdo
+spec:
+    acme:
+        server: https://acme-v02.api.letsencrypt.org/directory
+        email: 'mikcing@gmail.com'
+        privateKeySecretRef:
+            name: letsencrypt-prod
+        http01: {}

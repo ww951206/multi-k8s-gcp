@@ -12,7 +12,7 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <img src="https://bloximages.chicago2.vip.townnews.com/thetandd.com/content/tncms/assets/v3/editorial/5/2a/52aff60c-e179-5b43-9754-1e7c264e12fc/5ba1ba104c953.image.jpg" className="App-logo" alt="logo" />
-            <h1 className="App-title">Chris's Fib calculator--Kubernetes V3</h1>   
+            <h1 className="App-title">Chris's Fib calculator--Kubernetes GCP-V2</h1>   
             <Link to="/">Home  </Link>
             <Link to="/otherpage">Other Page</Link>
           </header>
