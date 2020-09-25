@@ -1,5 +1,5 @@
 apiVersion: cert-manager.io/v1alpha2
-kind: certificate
+kind: Certificate
 metadata:
     name:tinybubu-com-tls
 spec:
